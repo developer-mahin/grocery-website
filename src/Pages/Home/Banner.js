@@ -22,7 +22,7 @@ const Banner = () => {
 
 
     return (
-        <>
+        <div data-aos="fade-down">
             <Swiper
                 spaceBetween={30}
                 centeredSlides={true}
@@ -38,8 +38,8 @@ const Banner = () => {
                 className="mySwiper"
             >
                 {
-                    sliderImage.map(img => <>
-                        <SwiperSlide>
+                    sliderImage.map(img =>
+                        <SwiperSlide key={img.id}>
                             <div className='relative'>
                                 <img className='w-full lg:h-[600px] md:h-[400px] h-[200px]' src={img.image} alt="" />
 
@@ -68,27 +68,10 @@ const Banner = () => {
                                 </div>
                             </div>
                         </SwiperSlide>
-                    </>)
+                    )
                 }
-
-
-                {/* <SwiperSlide>
-                    <img
-                        className='w-full lg:h-[600px] md:h-[400px] h-[200px]'
-                        src="https://i.ibb.co/SVd3qDM/slider-1-min.png" alt="" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className='w-full lg:h-[600px] md:h-[400px] h-[200px]'
-                        src="https://i.ibb.co/34dzNR4/hungryroot-1658507018.png" alt="" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img
-                        className='w-full lg:h-[600px] md:h-[400px] h-[200px]'
-                        src="https://i.ibb.co/8PZY5BV/Save-Money-On-Groceries-UBC-Food-Services.jpg" alt="" />
-                </SwiperSlide> */}
             </Swiper>
-        </>
+        </div>
     );
 };
 

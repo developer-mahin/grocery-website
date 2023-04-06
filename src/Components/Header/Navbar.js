@@ -32,6 +32,18 @@ const Navbar = () => {
                                 onClick={() => setIsOpen(!isOpen)}
                                 className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
                                 <NavLink
+                                    to="/products"
+                                    className={({ isActive, isPending }) =>
+                                        isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"
+                                    }
+                                >
+                                    Products
+                                </NavLink>
+                            </li>
+                            <li
+                                onClick={() => setIsOpen(!isOpen)}
+                                className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
+                                <NavLink
                                     to="/booking"
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"

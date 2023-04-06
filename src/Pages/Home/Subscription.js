@@ -12,7 +12,7 @@ const Subscription = () => {
     }
 
     return (
-        <div className='container mx-auto px-3 lg:py-20 py-10'>
+        <div className='container mx-auto px-3 lg:pb-20 pb-10'>
             <div style={subscriptionBg} className='lg:p-20 md:p-10 p-5'>
                 <div className='grid lg:grid-cols-2 grid-cols-1'>
                     <div>

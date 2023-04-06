@@ -33,10 +33,10 @@ const testimonialInfo = [
 
 const Testimonial = () => {
     return (
-        <div className='container mx-auto px-3 lg:py-20 py-10'>
+        <div data-aos="fade-left"  className='container mx-auto px-3 lg:py-20 py-10'>
             <div className="flex justify-center items-center mb-10">
                 <div className="text-center">
-                    <h2 className="lg:text-6xl text-3xl lg:font-semibold font-bold text-gray-700">Testimonial</h2>
+                    <h2 className="lg:text-5xl text-3xl lg:font-semibold font-bold text-gray-700">Testimonial</h2>
                     <div className="text-center flex justify-center items-center"> 
                         <img src="https://i.ibb.co/bK0cyZm/devider-160x36.png" alt="" />
                     </div>
@@ -70,7 +70,7 @@ const Testimonial = () => {
                 <>
                     {
                         testimonialInfo.map(info => <SwiperSlide key={info.id}>
-                            <div className="border rounded p-3 shadow hover:shadow-lg duration-300 mb-10">
+                            <div  data-aos="flip-up" className="border rounded p-3 shadow hover:shadow-lg duration-300 mb-10">
                                 <div className="flex justify-center items-center">
                                     <div>
                                         <img src={info.image} className="w-32 h-32 object-cover rounded-full" alt="" />
