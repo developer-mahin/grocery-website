@@ -19,7 +19,7 @@ const Category = () => {
     }
 
     return (
-        <div data-aos="fade-right" className='container mx-auto px-3 lg:pt-20 pt-10'>
+        <div data-aos="zoom-in" className='container mx-auto px-3 lg:pt-20 pt-10'>
             <div className="flex justify-center items-center mb-10">
                 <div className="text-center">
                     <h2 className="lg:text-5xl text-3xl lg:font-semibold font-bold text-gray-700"> Featured Categories</h2>
@@ -31,7 +31,7 @@ const Category = () => {
             </div>
             <div className='grid lg:grid-cols-9 md:grid-cols-6 grid-cols-3 gap-4'>
                 {
-                    categories.map(category => <Link to={`/category/${category._id}`} key={category._id} className='p-2 border rounded bg-[#ECFFEC] hover:border-green-400 duration-200 cursor-pointer'>
+                    categories.map(category => <Link data-aos="zoom-in" to={`/category/${category._id}`} key={category._id} className='p-2 border rounded bg-[#ECFFEC] hover:border-green-400 duration-200 cursor-pointer'>
                         <img src={category.category_img} alt="" />
                         <h4 className='text-center font-semibold lg:text-base text-xs'>{category.category}</h4>
                     </Link>)

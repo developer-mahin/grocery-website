@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
     return (
         <div data-aos="zoom-in" className='border rounded shadow cursor-pointer hover:shadow-lg duration-300'>
             <div>
-                <img className='w-full h-[250px] object-cover' src={image} alt="" />
+                <img className='w-full h-[250px] object-cover  rounded-t' src={image} alt="" />
             </div>
             <div className='p-4'>
                 <h3 className='text-md font-bold'>{title}</h3>

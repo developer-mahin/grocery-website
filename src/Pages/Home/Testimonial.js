@@ -33,7 +33,7 @@ const testimonialInfo = [
 
 const Testimonial = () => {
     return (
-        <div data-aos="fade-left"  className='container mx-auto px-3 lg:py-20 py-10'>
+        <div  className='container mx-auto px-3 lg:py-20 py-10'>
             <div className="flex justify-center items-center mb-10">
                 <div className="text-center">
                     <h2 className="lg:text-5xl text-3xl lg:font-semibold font-bold text-gray-700">Testimonial</h2>
