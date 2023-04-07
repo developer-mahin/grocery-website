@@ -1,13 +1,40 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import { BsPhone } from 'react-icons/bs';
 import { ImLocation } from "react-icons/im"
 import { MdMarkEmailRead } from "react-icons/md"
 import { FaFacebookF, FaLinkedinIn } from "react-icons/fa"
 import { AiFillYoutube, AiOutlineInstagram, AiOutlineTwitter } from 'react-icons/ai';
+import emailjs from '@emailjs/browser';
+import { toast } from 'react-hot-toast';
+
 
 const Contact = () => {
+
+    const form = useRef();
+    const [loading, setLoading] = useState(false)
+
+    const handleSubmitMessage = (e) => {
+        setLoading(true)
+        e.preventDefault();
+        emailjs.sendForm(
+            'service_7p2bh3q',
+            'template_p3cbhw8',
+            form.current,
+            '-uwk-Nl_HU1-NHuk2')
+            .then((result) => {
+                toast.success("successfully message send")
+                setLoading(false)
+            }, (error) => {
+                toast.error(error.message)
+                setLoading(false)
+            });
+    }
+
+
+
+
     return (
-        <div className='container mx-auto px-3 lg:pb-20 pb-10'>
+        <div data-aos="zoom-in" className='container mx-auto px-3 lg:pb-20 pb-10'>
             <div className="flex justify-center items-center mb-10">
                 <div className="text-center">
                     <h2 className="lg:text-5xl text-3xl lg:font-semibold font-bold text-gray-700">Contact</h2>
@@ -71,17 +98,19 @@ const Contact = () => {
 
                 </div>
 
-                <form className='flex-1'>
+                <form ref={form} onSubmit={handleSubmitMessage} className='flex-1'>
                     <div className='my-3'>
-                        <input type="email" name="" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Enter email address' id="" />
+                        <input type="text" name="user_name" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Enter your name' id="" required />
                     </div>
                     <div className='my-3'>
-                        <input type="text" name="" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Subject' id="" />
+                        <input type="email" name="user_email" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Enter email address' id="" required />
                     </div>
                     <div className='my-3'>
-                        <textarea name="" id="" cols="30" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Message...' rows="6"></textarea>
+                        <textarea name="" id="message" cols="30" className='w-full px-4 py-2 rounded focus:outline-green-500 border border-green-300' placeholder='Message...' required rows="6"></textarea>
                     </div>
-                    <button type='submit' className='px-6 py-2 border-2 border-green-500 hover:bg-green-500 duration-500 rounded-full font-semibold'>Send Message</button>
+                    <button type='submit' className='px-6 py-2 border-2 border-green-500 hover:bg-green-500 duration-500 rounded-full font-semibold'>
+                        {loading ? "Loading..." : "Send Message"}
+                    </button>
                 </form>
             </div>
         </div>

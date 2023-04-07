@@ -16,13 +16,13 @@ const AboutUs = () => {
 
             <div className='grid lg:grid-cols-2 grid-cols-1 gap-6 justify-items-center mb-6'>
                 <div>
-                    <h1 className='lg:text-6xl text-3xl font-semibold'>Weero Digital</h1>
+                    <h1 className='lg:text-6xl text-3xl font-semibold text-gray-700' >Weero Digital</h1>
                     <span className='block my-2'>For One-Stop Solution Since 2008</span>
                     <p className='my-3 lg:text-lg text-base'>Weero Digital is a full-service digital marketing company that focuses on driving results via effective and measurable solutions. We partner with our clients to develop their marketing plans, and set up winning strategies to generate and convert leads. From designing, developing and optimizing websites to increasing sales through tactical digital marketing activities, we work with our clients to raise their brand awareness, generate more sales opportunities and maximize their marketing budget ROI.</p>
                 </div>
 
                 <div>
-                    <Lottie animationData={aboutUs}></Lottie>
+                    <Lottie animationData={aboutUs} loop={true}></Lottie>
                 </div>
             </div>
 
