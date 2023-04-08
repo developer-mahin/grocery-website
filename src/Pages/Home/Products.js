@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
-import Spinner from '../../Components/Spinner/Spinner';
-import ProductCard from '../../Components/ProductCard/ProductCard';
 import { BsArrowRight } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import ProductCard from '../../Components/ProductCard/ProductCard';
+import Spinner from '../../Components/Spinner/Spinner';
 
 const Products = () => {
     const navigate = useNavigate()
@@ -11,7 +11,7 @@ const Products = () => {
     const { data: products = [], isLoading } = useQuery({
         queryKey: ["products"],
         queryFn: async () => {
-            const res = await fetch("http://localhost:5000/products")
+            const res = await fetch("https://grocery-server.vercel.app/products")
             const data = await res.json()
             return data
         }
