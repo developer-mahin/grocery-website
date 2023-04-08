@@ -60,18 +60,6 @@ const Navbar = () => {
                                 onClick={() => setIsOpen(!isOpen)}
                                 className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
                                 <NavLink
-                                    to="/booking"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"
-                                    }
-                                >
-                                    Booking
-                                </NavLink>
-                            </li>
-                            <li
-                                onClick={() => setIsOpen(!isOpen)}
-                                className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
-                                <NavLink
                                     to="/about-us"
                                     className={({ isActive, isPending }) =>
                                         isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"
@@ -83,8 +71,8 @@ const Navbar = () => {
                             {
                                 user?.uid ? <>
                                     <button
-                                    onClick={handleLogOut}
-                                    className=' px-8 py-2 rounded-full border-2 border-green-500 hover:bg-green-500 font-semibold duration-300 lg:ms-10' >
+                                        onClick={handleLogOut}
+                                        className=' px-8 py-2 rounded-full border-2 border-green-500 hover:bg-green-500 font-semibold duration-300 lg:ms-10' >
                                         Log Out
                                     </button>
                                 </> : <>

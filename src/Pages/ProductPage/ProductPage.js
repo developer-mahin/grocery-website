@@ -2,9 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Spinner from '../../Components/Spinner/Spinner';
 import ProductCard from '../../Components/ProductCard/ProductCard';
+import useTitle from '../../hooks/useTitle';
 
 const ProductPage = () => {
 
+    useTitle("Products")
 
     const { data: products = [], isLoading } = useQuery({
         queryKey: ["products"],

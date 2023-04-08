@@ -3,12 +3,14 @@ import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import { AUTH_CONTEXT } from '../../Context/AuthProvider';
 import { toast } from 'react-hot-toast';
+import useTitle from '../../hooks/useTitle';
 
 const SignUp = () => {
 
     const { createAccount, updateProfileInfo, googleSingIn } = useContext(AUTH_CONTEXT)
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
+    useTitle("Sign Up")
 
 
     //  create account with email and password

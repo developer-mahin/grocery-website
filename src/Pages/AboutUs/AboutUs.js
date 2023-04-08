@@ -1,8 +1,12 @@
 import React from 'react';
 import Lottie from "lottie-react";
 import aboutUs from "../../Assets/about.json"
+import useTitle from '../../hooks/useTitle';
 
 const AboutUs = () => {
+
+    useTitle("About Us")
+
     return (
         <div className='container mx-auto px-3 lg:py-20 py-10'>
             <div className="flex justify-center items-center mb-10">

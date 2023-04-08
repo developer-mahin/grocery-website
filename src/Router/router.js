@@ -24,8 +24,11 @@ const router = createBrowserRouter([
                 element: <AboutUs></AboutUs>
             },
             {
-                path: "/booking",
-                element: <Booking></Booking>
+                path: "/booking/:id",
+                element: <Booking></Booking>,
+                loader: ({ params }) => {
+                    return fetch(`http://localhost:5000/booking-product/${params.id}`)
+                }
             },
             {
                 path: "/products",
