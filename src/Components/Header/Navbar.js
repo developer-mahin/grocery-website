@@ -1,11 +1,27 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { HiMenuAlt3, HiX } from "react-icons/hi"
+import { AUTH_CONTEXT } from '../../Context/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 
 const Navbar = () => {
 
     const [isOpen, setIsOpen] = useState(false)
+    const { user, logout } = useContext(AUTH_CONTEXT)
+
+
+    const handleLogOut = () => {
+        logout()
+            .then(() => {
+                toast.success("user loged out")
+            })
+            .catch(error => {
+                toast.error(error.message)
+            })
+    }
+
+
 
     return (
         <div className='bg-[#e7e7e7e5] backdrop-blur-sm shadow-lg sticky top-0 left-0 right-0 z-50'>
@@ -64,18 +80,28 @@ const Navbar = () => {
                                     About us
                                 </NavLink>
                             </li>
-                            <li
-                                onClick={() => setIsOpen(!isOpen)}
-                                className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
-                                <NavLink
-                                    to="/signin"
-                                    className={({ isActive, isPending }) =>
-                                        isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"
-                                    }
-                                >
-                                    Sign In
-                                </NavLink>
-                            </li>
+                            {
+                                user?.uid ? <>
+                                    <button
+                                    onClick={handleLogOut}
+                                    className=' px-8 py-2 rounded-full border-2 border-green-500 hover:bg-green-500 font-semibold duration-300 lg:ms-10' >
+                                        Log Out
+                                    </button>
+                                </> : <>
+                                    <li
+                                        onClick={() => setIsOpen(!isOpen)}
+                                        className='md:border-none border-b-2 border-gray-500 md:ml-10 md:mb-0 mb-4'>
+                                        <NavLink
+                                            to="/signin"
+                                            className={({ isActive, isPending }) =>
+                                                isPending ? "pending" : isActive ? "text-[#29a56c] font-semibold" : "font-semibold"
+                                            }
+                                        >
+                                            Sign In
+                                        </NavLink>
+                                    </li>
+                                </>
+                            }
                         </ul>
                         <div className='md:hidden md:pr-0 pr-3'>
                             {
@@ -93,7 +119,7 @@ const Navbar = () => {
                     </nav>
                 </div>
             </div>
-        </div>
+        </div >
     );
 };
 

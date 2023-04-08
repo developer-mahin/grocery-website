@@ -7,6 +7,7 @@ import Booking from "../Pages/BookingPage/Booking";
 import Signin from "../Pages/Signin/Signin";
 import ProductPage from "../Pages/ProductPage/ProductPage";
 import CategoryOfProducts from "../Pages/CategoryOfProducts/CategoryOfProducts";
+import SignUp from "../Pages/SignUp/SignUp";
 
 const router = createBrowserRouter([
     {
@@ -33,6 +34,10 @@ const router = createBrowserRouter([
             {
                 path: "/signin",
                 element: <Signin></Signin>
+            },
+            {
+                path: "/signup",
+                element: <SignUp></SignUp>
             },
             {
                 path: "/category/:id",

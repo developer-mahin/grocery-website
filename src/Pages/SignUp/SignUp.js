@@ -1,34 +1,52 @@
 import React, { useContext, useState } from 'react';
-import { FcGoogle } from "react-icons/fc"
+import { FcGoogle } from 'react-icons/fc';
 import { Link, useNavigate } from 'react-router-dom';
 import { AUTH_CONTEXT } from '../../Context/AuthProvider';
 import { toast } from 'react-hot-toast';
 
-const Signin = () => {
+const SignUp = () => {
 
-    const { loginUser, googleSingIn } = useContext(AUTH_CONTEXT)
+    const { createAccount, updateProfileInfo, googleSingIn } = useContext(AUTH_CONTEXT)
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
 
 
-    //  Login with email and password
-    const handleSignin = (e) => {
+    //  create account with email and password
+
+    const handleSinUp = (e) => {
         setLoading(true)
         e.preventDefault()
         const form = e.target;
         const email = form.email.value;
+        const name = form.name.value;
         const password = form.password.value;
+        const image = form.image.files[0]
 
-        loginUser(email, password)
-            .then(result => {
-                const user = result.user
-                navigate("/")
-                toast.success("successfully user login")
-                setLoading(false)
-            })
-            .catch(error => {
-                toast.error(error.message)
-                setLoading(false)
+        const formData = new FormData()
+        formData.append("image", image)
+
+        const url = `https://api.imgbb.com/1/upload?key=b486f58b0681b7c344264f43dd69a0d8`;
+        fetch(url, {
+            method: "POST",
+            body: formData
+        })
+            .then(res => res.json())
+            .then(data => {
+
+                const image = data.data.display_url
+                createAccount(email, password)
+                    .then(result => {
+                        const user = result.user
+                        updateProfileInfo(name, image)
+                        navigate("/")
+                        toast.success("successfully user created")
+                        setLoading(false)
+                    })
+                    .catch(error => {
+                        toast.error(error.message)
+                        setLoading(false)
+                    })
+
             })
     }
 
@@ -51,9 +69,9 @@ const Signin = () => {
         <div className='lg:w-[450px] w-full mx-auto px-3 lg:my-16 my-8 '>
             <div className='border rounded p-3'>
                 <h2 className='text-3xl font-semibold text-center'>
-                    Login User
+                    Create account
                 </h2>
-                <form onSubmit={handleSignin}>
+                <form onSubmit={handleSinUp}>
                     <div className='py-2'>
                         <label>Enter email</label>
                         <input
@@ -62,6 +80,26 @@ const Signin = () => {
                             name='email'
                             required
                             placeholder='Email address'
+                        />
+                    </div>
+                    <div className='py-2'>
+                        <label>Enter name</label>
+                        <input
+                            className='w-full px-4 py-2 rounded border border-green-300 focus:outline-green-500'
+                            type="text"
+                            name='name'
+                            required
+                            placeholder='Email name'
+                        />
+                    </div>
+                    <div className='py-2'>
+                        <label>Your photo</label>
+                        <input
+                            className='w-full py-2'
+                            type="file"
+                            name='image'
+                            required
+                            accept="image/*"
                         />
                     </div>
                     <div className='py-2'>
@@ -75,7 +113,7 @@ const Signin = () => {
                         />
                     </div>
                     <button className='px-8 py-2 rounded-full border-2 border-green-500 hover:bg-green-500 font-semibold duration-300 mt-4'>
-                        {loading ? "Loading..." : "Sign in"}
+                        {loading ? "Loading..." : "Sign Up"}
                     </button>
                 </form>
                 <div className='flex items-center gap-3'>
@@ -92,8 +130,8 @@ const Signin = () => {
                     </button>
                 </div>
                 <div className='my-2 text-center'>
-                    <p>If are you new, then &nbsp;
-                        <Link to="/signup" className='text-blue-500 hover:underline'>create account</Link>
+                    <p>Already have an account than &nbsp;
+                        <Link to="/signin" className='text-blue-500 hover:underline'>Signin</Link>
                     </p>
                 </div>
             </div>
@@ -101,4 +139,4 @@ const Signin = () => {
     );
 };
 
-export default Signin;
+export default SignUp;

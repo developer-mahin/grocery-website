@@ -27,7 +27,7 @@ const ProductCard = ({ product }) => {
                     <p className='font-semibold text-sm'>{price}</p>
                     <button className='flex items-center gap-1 bg-green-100 px-3 py-2 text-sm rounded-md font-semibold text-green-500 hover:-translate-y-2 duration-500'>
                         <AiOutlineShoppingCart />
-                        <span className='text-xs'>Add</span>
+                        <span className='text-xs'>Book</span>
                     </button>
                 </div>
             </div>
